@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Velve for Life — Weekly Newsletter</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #faf7f2;
+      --warm-white: #fff9f4;
+      --sand: #ede8e0;
+      --blush: #f2e8e0;
+      --terracotta: #c4664a;
+      --terra-light: #e8856d;
+      --terra-pale: #faeae5;
+      --brown: #3d2b1f;
+      --mid-brown: #6b4c3b;
+      --muted: #a08878;
+      --green: #4a7c5f;
+      --green-pale: #e8f2ec;
+    }
+
+    body {
+      background: var(--sand);
+      font-family: 'DM Sans', sans-serif;
+      color: var(--brown);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrapper {
+      max-width: 640px;
+      margin: 36px auto;
+      background: var(--warm-white);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 4px 32px rgba(61,43,31,0.12);
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: var(--brown);
+      padding: 36px 44px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::after {
+      content: "";
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--terracotta), var(--terra-light), var(--terracotta));
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 18px;
+    }
+
+    .logo-text {
+      font-family: 'DM Serif Display', serif;
+      font-size: 30px;
+      color: var(--cream);
+      line-height: 1;
+      letter-spacing: -0.01em;
+    }
+
+    .logo-text em {
+      font-style: italic;
+      color: var(--terra-light);
+    }
+
+    .issue-info {
+      text-align: right;
+    }
+
+    .issue-info .week {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .issue-info .date {
+      font-size: 13px;
+      color: var(--terra-light);
+      margin-top: 3px;
+      font-weight: 500;
+    }
+
+    .header-note {
+      font-size: 14px;
+      color: #a09080;
+      line-height: 1.6;
+      font-style: italic;
+      border-top: 1px solid #4d3a30;
+      padding-top: 16px;
+    }
+
+    /* ── OWNER MESSAGE ── */
+    .owner-msg {
+      padding: 36px 44px;
+      border-bottom: 1px solid var(--sand);
+    }
+
+    .section-eyebrow {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 12px;
+    }
+
+    .owner-msg p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--mid-brown);
+    }
+
+    .owner-msg p + p { margin-top: 12px; }
+
+    .owner-sig {
+      margin-top: 20px;
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--terracotta);
+    }
+
+    /* ── ALLSTARS ── */
+    .allstars {
+      background: var(--terra-pale);
+      padding: 36px 44px;
+      border-bottom: 1px solid #edd8d0;
+    }
+
+    .allstars h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+      color: var(--brown);
+      margin-bottom: 6px;
+    }
+
+    .allstars .sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 22px;
+      line-height: 1.5;
+    }
+
+    .star-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .star-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--warm-white);
+      border: 1.5px solid #e0c8c0;
+      border-radius: 40px;
+      padding: 7px 16px 7px 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--brown);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .star-chip:hover {
+      border-color: var(--terracotta);
+      background: #fff5f2;
+    }
+
+    .star-icon {
+      font-size: 15px;
+    }
+
+    .star-sessions {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--terracotta);
+      margin-left: 2px;
+    }
+
+    /* ── BIRTHDAYS & MILESTONES ── */
+    .celebrations {
+      padding: 36px 44px;
+      border-bottom: 1px solid var(--sand);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .celebrate-block h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      margin-bottom: 14px;
+      color: var(--brown);
+    }
+
+    .celebrate-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--sand);
+    }
+
+    .celebrate-item:last-child { border-bottom: none; }
+
+    .celebrate-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .celebrate-name {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--brown);
+    }
+
+    .celebrate-detail {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    /* ── UPDATES ── */
+    .updates {
+      padding: 36px 44px;
+      border-bottom: 1px solid var(--sand);
+      background: var(--cream);
+    }
+
+    .updates h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+      margin-bottom: 20px;
+      color: var(--brown);
+    }
+
+    .update-item {
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--sand);
+    }
+
+    .update-item:last-child { border-bottom: none; }
+
+    .update-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--terracotta);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    .update-body strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--brown);
+      margin-bottom: 4px;
+    }
+
+    .update-body p {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--mid-brown);
+    }
+
+    /* ── COMMUNITY WIN ── */
+    .community-win {
+      padding: 36px 44px;
+      border-bottom: 1px solid var(--sand);
+    }
+
+    .win-card {
+      background: var(--green-pale);
+      border-left: 4px solid var(--green);
+      padding: 22px 24px;
+      border-radius: 2px;
+    }
+
+    .win-card .win-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+
+    .win-card p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #2d5240;
+    }
+
+    .win-card .win-name {
+      margin-top: 12px;
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--green);
+    }
+
+    /* ── TIP ── */
+    .tip-section {
+      padding: 36px 44px;
+      border-bottom: 1px solid var(--sand);
+    }
+
+    .tip-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+      margin-bottom: 14px;
+    }
+
+    .tip-section p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--mid-brown);
+    }
+
+    /* ── EVENTS ── */
+    .events {
+      padding: 36px 44px;
+      border-bottom: 1px solid var(--sand);
+      background: var(--blush);
+    }
+
+    .events h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    .event-row {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid #ddd0c8;
+      align-items: start;
+    }
+
+    .event-row:last-child { border-bottom: none; }
+
+    .event-date-box {
+      background: var(--terracotta);
+      color: white;
+      text-align: center;
+      padding: 6px 4px;
+      border-radius: 3px;
+    }
+
+    .event-date-box .e-day {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .event-date-box .e-month {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-top: 2px;
+    }
+
+    .event-info strong {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--brown);
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .event-info p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--brown);
+      padding: 30px 44px;
+      text-align: center;
+    }
+
+    .footer .footer-logo {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-size: 22px;
+      color: var(--terra-light);
+      margin-bottom: 10px;
+    }
+
+    .footer p {
+      font-size: 12px;
+      color: #7a6558;
+      line-height: 1.7;
+    }
+
+    .footer-links {
+      margin-top: 14px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #7a6558;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--terra-light); }
+
+    @media (max-width: 560px) {
+      .wrapper { margin: 0; border-radius: 0; }
+      .header, .owner-msg, .allstars, .tip-section,
+      .events, .updates, .community-win, .footer,
+      .celebrations { padding: 28px 24px; }
+      .celebrations { grid-template-columns: 1fr; }
+      .header-top { flex-direction: column; gap: 10px; }
+      .issue-info { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-top">
+      <div class="logo-text">Velve <em>for Life</em></div>
+      <div class="issue-info">
+        <div class="week">Week of</div>
+        <div class="date">April 21–27, 2026</div>
+      </div>
+    </div>
+    <p class="header-note">Your weekly dose of community, wins, and what's happening at the studio. Written for members, by people who actually know your name. 🧡</p>
+  </header>
+
+  <!-- OWNER MESSAGE -->
+  <section class="owner-msg">
+    <div class="section-eyebrow">From the Owner</div>
+    <p>Hey Velve family! What a week it's been. The energy on the floor has been absolutely electric — I keep saying it, but you all genuinely make this place something special.</p>
+    <p>We've got a few exciting things coming up this month that I can't wait to share with you. Keep reading for all the details, and as always — thank you for showing up. For yourself, and for each other.</p>
+    <div class="owner-sig">— [Owner Name] 🤍</div>
+  </section>
+
+  <!-- ALL-STARS -->
+  <section class="allstars">
+    <div class="section-eyebrow">⭐ All-Star Shout-Outs</div>
+    <h2>This Week's Most Dedicated Members</h2>
+    <p class="sub">These members showed up 3 or more times this week. That kind of consistency is what real progress is built on — let's celebrate them!</p>
+    <div class="star-grid">
+      <div class="star-chip"><span class="star-icon">🔥</span> Sarah M. <span class="star-sessions">5 sessions</span></div>
+      <div class="star-chip"><span class="star-icon">🔥</span> James T. <span class="star-sessions">4 sessions</span></div>
+      <div class="star-chip"><span class="star-icon">🔥</span> Rina C. <span class="star-sessions">4 sessions</span></div>
+      <div class="star-chip"><span class="star-icon">🔥</span> Marcus B. <span class="star-sessions">3 sessions</span></div>
+      <div class="star-chip"><span class="star-icon">🔥</span> Lena D. <span class="star-sessions">3 sessions</span></div>
+      <div class="star-chip"><span class="star-icon">🔥</span> Paolo R. <span class="star-sessions">3 sessions</span></div>
+    </div>
+  </section>
+
+  <!-- BIRTHDAYS & MILESTONES -->
+  <section class="celebrations">
+    <div class="celebrate-block">
+      <h3>🎂 Birthdays</h3>
+      <div class="celebrate-item">
+        <span class="celebrate-icon">🎉</span>
+        <div>
+          <div class="celebrate-name">Ana G.</div>
+          <div class="celebrate-detail">April 23 — Have a great one!</div>
+        </div>
+      </div>
+      <div class="celebrate-item">
+        <span class="celebrate-icon">🎉</span>
+        <div>
+          <div class="celebrate-name">Kevin S.</div>
+          <div class="celebrate-detail">April 26 — Happy birthday!</div>
+        </div>
+      </div>
+    </div>
+    <div class="celebrate-block">
+      <h3>🏅 Milestones</h3>
+      <div class="celebrate-item">
+        <span class="celebrate-icon">🥂</span>
+        <div>
+          <div class="celebrate-name">Donna L.</div>
+          <div class="celebrate-detail">6-month anniversary 🎊</div>
+        </div>
+      </div>
+      <div class="celebrate-item">
+        <span class="celebrate-icon">🥂</span>
+        <div>
+          <div class="celebrate-name">Tito F.</div>
+          <div class="celebrate-detail">3-month milestone 💪</div>
+        </div>
+      </div>
+      <div class="celebrate-item">
+        <span class="celebrate-icon">🥂</span>
+        <div>
+          <div class="celebrate-name">Carla M.</div>
+          <div class="celebrate-detail">1-year anniversary 🌟</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDIO UPDATES -->
+  <section class="updates">
+    <div class="section-eyebrow">In the Studio</div>
+    <h2>What's Going On</h2>
+    <div class="update-item">
+      <div class="update-dot"></div>
+      <div class="update-body">
+        <strong>New Saturday Slot Added</strong>
+        <p>We've opened a 9:30 AM Saturday session in response to your feedback. Spots are limited — book through the app before it fills up.</p>
+      </div>
+    </div>
+    <div class="update-item">
+      <div class="update-dot"></div>
+      <div class="update-body">
+        <strong>Equipment Refresh Coming</strong>
+        <p>We're upgrading the resistance bands and adding two new reformers next week. Bear with us for a couple of days while we set things up.</p>
+      </div>
+    </div>
+    <div class="update-item">
+      <div class="update-dot"></div>
+      <div class="update-body">
+        <strong>Parking Update</strong>
+        <p>The side lot behind the building is now available for members during evening sessions after 5:30 PM. Just show your membership card at the booth.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY WIN -->
+  <section class="community-win">
+    <div class="section-eyebrow">🏆 Community Win</div>
+    <div class="win-card">
+      <div class="win-label">Member Spotlight</div>
+      <p>"I honestly didn't think I'd make it past the first month. Six months later, I've lost 11kg, I sleep better, and I actually look forward to waking up early. This community changed everything for me."</p>
+      <div class="win-name">— Maria V., 6-month member ✨</div>
+    </div>
+    <p style="font-size:13px; color: var(--muted); margin-top:14px; line-height:1.6;">Have a win to share? A personal best, a transformation, or just a moment that made you proud? <a href="mailto:hello@velveforlife.com" style="color: var(--terracotta); text-decoration:none; font-weight:600;">Send it our way</a> — we'd love to celebrate you.</p>
+  </section>
+
+  <!-- HEALTH TIP -->
+  <section class="tip-section">
+    <div class="section-eyebrow">💡 This Week's Tip</div>
+    <h2>Rest Is Part of the Work</h2>
+    <p>You don't build strength during training — you build it during recovery. If you've been showing up every single day without a rest day, your body is likely running on stress hormones, not adaptation. Aim for at least one full rest day per week and prioritise 7–9 hours of sleep. Recovery isn't a reward for hard work. It <em>is</em> the work.</p>
+  </section>
+
+  <!-- EVENTS -->
+  <section class="events">
+    <div class="section-eyebrow">📅 Upcoming Events</div>
+    <h2>Mark Your Calendar</h2>
+    <div class="event-row">
+      <div class="event-date-box">
+        <div class="e-day">26</div>
+        <div class="e-month">Apr</div>
+      </div>
+      <div class="event-info">
+        <strong>Bring a Friend Day</strong>
+        <p>Invite someone you love to try a free class. No strings attached — just a chance to share what you've been up to!</p>
+      </div>
+    </div>
+    <div class="event-row">
+      <div class="event-date-box">
+        <div class="e-day">3</div>
+        <div class="e-month">May</div>
+      </div>
+      <div class="event-info">
+        <strong>Summer Challenge Kick-Off</strong>
+        <p>8-week group challenge starting May 3. Teams, prizes, and a whole lot of fun. Sign up at the front desk.</p>
+      </div>
+    </div>
+    <div class="event-row">
+      <div class="event-date-box">
+        <div class="e-day">10</div>
+        <div class="e-month">May</div>
+      </div>
+      <div class="event-info">
+        <strong>Member Appreciation Morning</strong>
+        <p>Light breakfast and smoothies after the 8 AM session. Our way of saying thank you — see you there.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-logo">Velve for Life</div>
+    <p>Sent with love to our active members and intro program family.<br/>
+    [Studio Address] &nbsp;·&nbsp; hello@velveforlife.com</p>
+    <div class="footer-links">
+      <a href="#">Book a Class</a>
+      <a href="#">Instagram</a>
+      <a href="#">Website</a>
+      <a href="#">Unsubscribe</a>
+    </div>
+    <p style="margin-top: 16px; font-size: 11px;">© 2026 Velve for Life. This newsletter is sent to active and intro program members only.</p>
+  </footer>
+
+</div>
+</body>
+</html>
