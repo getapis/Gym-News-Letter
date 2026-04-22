@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IronPulse Fitness — May Newsletter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,600;0,700;1,400&family=Barlow+Condensed:wght@400;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --coal: #111111;
+      --steel: #1c1c1c;
+      --mid: #2a2a2a;
+      --lime: #c8f535;
+      --lime-dark: #a8d020;
+      --white: #f4f4f0;
+      --muted: #888;
+      --red: #e63b2e;
+    }
+
+    body {
+      background: #e8e8e2;
+      font-family: 'Barlow', sans-serif;
+      color: var(--black);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .email-wrapper {
+      max-width: 680px;
+      margin: 40px auto;
+      background: var(--white);
+      border: 2px solid var(--black);
+      box-shadow: 8px 8px 0 var(--black);
+      overflow: hidden;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: var(--black);
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-tape {
+      background: var(--lime);
+      color: var(--black);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 7px 20px;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .tape-inner {
+      display: inline-block;
+      animation: marquee 18s linear infinite;
+    }
+
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .header-body {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      padding: 36px 40px 32px;
+      gap: 20px;
+    }
+
+    .brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 72px;
+      line-height: 0.88;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+
+    .brand span {
+      color: var(--lime);
+    }
+
+    .issue-tag {
+      text-align: right;
+    }
+
+    .issue-tag .month {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--lime);
+    }
+
+    .issue-tag .year {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 42px;
+      color: var(--muted);
+      line-height: 1;
+    }
+
+    .header-stripe {
+      height: 5px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--lime) 0px, var(--lime) 20px,
+        var(--black) 20px, var(--black) 24px
+      );
+    }
+
+    /* ── HERO CALLOUT ── */
+    .hero {
+      background: var(--lime);
+      padding: 44px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "MAY";
+      position: absolute;
+      right: -20px;
+      top: -10px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 160px;
+      color: rgba(0,0,0,0.06);
+      pointer-events: none;
+      line-height: 1;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--black);
+      opacity: 0.55;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 58px;
+      line-height: 0.95;
+      color: var(--black);
+      max-width: 480px;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--black);
+      max-width: 500px;
+      font-weight: 600;
+    }
+
+    /* ── SECTION SHARED ── */
+    .section {
+      padding: 40px 40px;
+      border-top: 2px solid var(--black);
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .section-label::before {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--lime-dark);
+    }
+
+    .section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 38px;
+      letter-spacing: 0.02em;
+      color: var(--black);
+      margin-bottom: 14px;
+      line-height: 1;
+    }
+
+    .section p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    /* ── ANNOUNCEMENT CARDS ── */
+    .announcements {
+      background: var(--coal);
+      color: var(--white);
+    }
+
+    .announcements .section-label { color: #666; }
+    .announcements .section-label::before { background: var(--lime); }
+    .announcements h2 { color: var(--white); }
+    .announcements p { color: #aaa; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .card {
+      background: var(--steel);
+      border: 1px solid #333;
+      padding: 24px 22px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .card:hover { border-color: var(--lime); }
+
+    .card-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      color: var(--mid);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--lime);
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: #999;
+      line-height: 1.6;
+    }
+
+    /* ── SCHEDULE SECTION ── */
+    .schedule-grid {
+      margin-top: 22px;
+      border: 2px solid var(--black);
+    }
+
+    .schedule-row {
+      display: grid;
+      grid-template-columns: 110px 1fr auto;
+      align-items: center;
+      padding: 14px 18px;
+      border-bottom: 1px solid #ddd;
+      gap: 14px;
+      transition: background 0.15s;
+    }
+
+    .schedule-row:last-child { border-bottom: none; }
+    .schedule-row:hover { background: #f8f8f4; }
+
+    .schedule-time {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+
+    .schedule-class {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--black);
+    }
+
+    .schedule-class small {
+      display: block;
+      font-weight: 400;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    .badge {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      background: var(--lime);
+      color: var(--black);
+      white-space: nowrap;
+    }
+
+    .badge.red { background: var(--red); color: var(--white); }
+    .badge.dark { background: var(--black); color: var(--lime); }
+
+    /* ── STAT STRIP ── */
+    .stat-strip {
+      background: var(--black);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 2px solid var(--black);
+    }
+
+    .stat {
+      padding: 30px 24px;
+      border-right: 1px solid #222;
+      text-align: center;
+    }
+
+    .stat:last-child { border-right: none; }
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      color: var(--lime);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    /* ── TIP SECTION ── */
+    .tip-block {
+      border-left: 5px solid var(--lime);
+      padding: 18px 22px;
+      background: #f5f5ef;
+      margin-top: 20px;
+    }
+
+    .tip-block .tip-header {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--lime-dark);
+      margin-bottom: 8px;
+    }
+
+    .tip-block p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--lime);
+      padding: 48px 40px;
+      text-align: center;
+      border-top: 2px solid var(--black);
+    }
+
+    .cta-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      color: var(--black);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .cta-section p {
+      font-size: 15px;
+      color: #333;
+      max-width: 420px;
+      margin: 0 auto 28px;
+      font-weight: 600;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--black);
+      color: var(--lime);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      text-decoration: none;
+      border: 2px solid var(--black);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .cta-btn:hover {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--coal);
+      padding: 28px 40px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 20px;
+      border-top: 2px solid var(--black);
+    }
+
+    .footer-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      color: var(--white);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-brand span { color: var(--lime); }
+
+    .footer p {
+      font-size: 12px;
+      color: #555;
+      margin-top: 4px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .footer-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #666;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--lime); }
+
+    @media (max-width: 600px) {
+      .email-wrapper { margin: 0; box-shadow: none; border: none; }
+      .header-body { grid-template-columns: 1fr; }
+      .brand { font-size: 52px; }
+      .hero h1 { font-size: 42px; }
+      .cards { grid-template-columns: 1fr; }
+      .stat-strip { grid-template-columns: 1fr; }
+      .stat { border-right: none; border-bottom: 1px solid #222; }
+      .footer { grid-template-columns: 1fr; }
+      .footer-links { flex-wrap: wrap; }
+      .schedule-row { grid-template-columns: 90px 1fr; }
+      .badge { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="email-wrapper">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-tape">
+      <span class="tape-inner">
+        TRAIN HARDER &nbsp;·&nbsp; PUSH LIMITS &nbsp;·&nbsp; BREAK RECORDS &nbsp;·&nbsp; OWN YOUR GOALS &nbsp;·&nbsp; TRAIN HARDER &nbsp;·&nbsp; PUSH LIMITS &nbsp;·&nbsp; BREAK RECORDS &nbsp;·&nbsp; OWN YOUR GOALS &nbsp;·&nbsp; TRAIN HARDER &nbsp;·&nbsp; PUSH LIMITS &nbsp;·&nbsp; BREAK RECORDS &nbsp;·&nbsp; OWN YOUR GOALS &nbsp;·&nbsp;
+      </span>
+    </div>
+    <div class="header-body">
+      <div class="brand">IRON<span>PULSE</span><br>FITNESS</div>
+      <div class="issue-tag">
+        <div class="month">May 2026</div>
+        <div class="year">VOL 12</div>
+      </div>
+    </div>
+    <div class="header-stripe"></div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">Monthly Update</div>
+    <h1>YOUR STRONGEST MONTH STARTS NOW.</h1>
+    <p>May is here — and so is your next level. New classes, new challenges, new PRs waiting to be shattered. Here's everything happening at IronPulse this month.</p>
+  </section>
+
+  <!-- ANNOUNCEMENTS -->
+  <section class="section announcements">
+    <div class="section-label">What's New</div>
+    <h2>May Announcements</h2>
+    <p>Big things are dropping this month. Here's the full rundown for our members.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-num">01</div>
+        <div class="card-title">New Recovery Zone</div>
+        <p>We've added a dedicated stretching & foam rolling area on the second floor — open 24/7 to all members.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <div class="card-title">Summer Shred Challenge</div>
+        <p>8-week body transformation challenge kicks off May 6. Sign up at the front desk or via the app.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <div class="card-title">New Equipment Arrived</div>
+        <p>4 new Rogue racks, cable machines, and a full set of competition kettlebells are now on the floor.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">04</div>
+        <div class="card-title">Refer & Earn</div>
+        <p>Refer a friend this month and get one free month added to your membership. No limits on referrals.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stat-strip">
+    <div class="stat">
+      <div class="stat-num">1,240</div>
+      <div class="stat-label">Active Members</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">38</div>
+      <div class="stat-label">Classes / Week</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">97%</div>
+      <div class="stat-label">Member Satisfaction</div>
+    </div>
+  </div>
+
+  <!-- SCHEDULE -->
+  <section class="section">
+    <div class="section-label">This Month</div>
+    <h2>Featured Class Schedule</h2>
+    <p>New slots added across the week. Book early — popular sessions fill up fast.</p>
+    <div class="schedule-grid">
+      <div class="schedule-row">
+        <div class="schedule-time">MON · 6:00 AM</div>
+        <div class="schedule-class">Early Bird HIIT <small>Coach Dana · 45 min</small></div>
+        <div class="badge">Popular</div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">TUE · 7:30 PM</div>
+        <div class="schedule-class">Powerlifting Fundamentals <small>Coach Marcus · 60 min</small></div>
+        <div class="badge dark">New</div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">WED · 12:00 PM</div>
+        <div class="schedule-class">Lunchtime Burn <small>Coach Tia · 30 min</small></div>
+        <div class="badge">Open</div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">THU · 6:30 AM</div>
+        <div class="schedule-class">Strength & Conditioning <small>Coach Ryan · 60 min</small></div>
+        <div class="badge red">Filling Fast</div>
+      </div>
+      <div class="schedule-row">
+        <div class="schedule-time">SAT · 9:00 AM</div>
+        <div class="schedule-class">Weekend Warrior Bootcamp <small>All Coaches · 75 min</small></div>
+        <div class="badge red">Filling Fast</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIP -->
+  <section class="section" style="padding-top: 0; border-top: none;">
+    <div class="section-label">Coach's Corner</div>
+    <h2>May Training Tip</h2>
+    <div class="tip-block">
+      <div class="tip-header">💡 Focus of the Month: Progressive Overload</div>
+      <p>The #1 reason people plateau is because they stop challenging their body. This month, commit to adding just 5% more weight or 1 more rep to your key lifts every week. Small consistent progress compounds into massive results. Track it. Log it. Own it.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>BRING A FRIEND. BUILD A LEGACY.</h2>
+    <p>Our referral program is live all month. Every friend you bring earns you a free month. No cap. Pure reward.</p>
+    <a href="#" class="cta-btn">Refer Now &rarr;</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div>
+      <div class="footer-brand">IRON<span>PULSE</span> FITNESS</div>
+      <p>123 Iron Street, Fitness District &nbsp;·&nbsp; hello@ironpulsegym.com</p>
+      <p style="margin-top:6px;">© 2026 IronPulse Fitness. All rights reserved.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#">Website</a>
+      <a href="#">Instagram</a>
+      <a href="#">Unsubscribe</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
