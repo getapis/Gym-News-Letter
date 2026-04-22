@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Velve for Life — Weekly Newsletter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Barlow+Condensed:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #080808;
+      --coal:    #101010;
+      --steel:   #181818;
+      --panel:   #1e1e1e;
+      --border:  #2a2a2a;
+      --electric:#e8ff00;
+      --elec-dim:#b8cc00;
+      --orange:  #ff6b1a;
+      --orange-dim:#cc5010;
+      --white:   #f5f5f5;
+      --muted:   #666;
+      --mid:     #444;
+    }
+
+    body {
+      background: #111;
+      font-family: 'Barlow', sans-serif;
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrapper {
+      max-width: 660px;
+      margin: 32px auto;
+      background: var(--coal);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    /* ── TICKER ── */
+    .ticker {
+      background: var(--electric);
+      overflow: hidden;
+      padding: 8px 0;
+      border-bottom: 2px solid var(--elec-dim);
+    }
+    .ticker-inner {
+      display: inline-block;
+      white-space: nowrap;
+      animation: ticker 20s linear infinite;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--black);
+    }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: var(--black);
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-bg-text {
+      position: absolute;
+      top: -18px;
+      left: -10px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 200px;
+      color: rgba(232,255,0,0.04);
+      pointer-events: none;
+      line-height: 1;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .header-inner {
+      position: relative;
+      padding: 38px 44px 34px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 16px;
+    }
+
+    .brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 64px;
+      line-height: 0.9;
+      color: var(--white);
+      letter-spacing: 0.03em;
+    }
+
+    .brand span { color: var(--electric); }
+
+    .brand-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .header-meta { text-align: right; }
+
+    .header-meta .week-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .header-meta .week-date {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: var(--electric);
+      line-height: 1.1;
+    }
+
+    .header-divider {
+      height: 3px;
+      background: linear-gradient(90deg, var(--electric) 0%, var(--orange) 50%, var(--electric) 100%);
+      background-size: 200% 100%;
+      animation: gradshift 4s ease infinite;
+    }
+
+    @keyframes gradshift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .header-note {
+      background: var(--steel);
+      padding: 16px 44px;
+      font-size: 14px;
+      color: #888;
+      font-style: italic;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── SECTION SHARED ── */
+    .section {
+      padding: 38px 44px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--electric);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .eyebrow::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 40px;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .section-title span { color: var(--electric); }
+
+    .section-body {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #aaa;
+    }
+
+    /* ── OWNER MESSAGE ── */
+    .owner-section { background: var(--steel); }
+    .owner-section .section-body { color: #bbb; }
+    .owner-section .section-body p + p { margin-top: 12px; }
+
+    .owner-sig {
+      margin-top: 20px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      color: var(--orange);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── ALL-STARS ── */
+    .allstars-section { background: var(--black); }
+
+    .star-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .star-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--steel);
+      border: 1px solid var(--border);
+      padding: 9px 18px 9px 12px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      text-transform: uppercase;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .star-chip::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(232,255,0,0.07), transparent);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .star-chip:hover { border-color: var(--electric); }
+    .star-chip:hover::before { opacity: 1; }
+
+    .star-sessions {
+      font-size: 11px;
+      font-weight: 900;
+      color: var(--electric);
+      background: rgba(232,255,0,0.1);
+      padding: 2px 7px;
+      margin-left: 2px;
+    }
+
+    /* ── BIRTHDAYS & MILESTONES ── */
+    .celebrations {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .cel-col {
+      padding: 38px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cel-col:first-child { border-right: 1px solid var(--border); }
+    .cel-col .section-title { font-size: 30px; margin-bottom: 18px; }
+
+    .celebrate-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .celebrate-item:last-child { border-bottom: none; }
+
+    .cel-icon { font-size: 20px; line-height: 1; margin-top: 1px; }
+
+    .cel-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--white);
+    }
+
+    .cel-detail { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+    /* ── UPDATES ── */
+    .update-item {
+      display: flex;
+      gap: 18px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+
+    .update-item:last-child { border-bottom: none; }
+
+    .update-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 38px;
+      color: var(--border);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 32px;
+    }
+
+    .update-content strong {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--electric);
+      margin-bottom: 5px;
+    }
+
+    .update-content p { font-size: 14px; line-height: 1.65; color: #999; }
+
+    /* ── COMMUNITY WIN ── */
+    .win-section { background: var(--black); }
+
+    .win-card {
+      border: 1px solid var(--orange-dim);
+      background: rgba(255,107,26,0.06);
+      padding: 26px 28px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+
+    .win-card::before {
+      content: "\"";
+      position: absolute;
+      top: -20px; left: 16px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 120px;
+      color: rgba(255,107,26,0.12);
+      line-height: 1;
+    }
+
+    .win-card p { font-size: 16px; line-height: 1.8; color: #ccc; font-style: italic; position: relative; }
+
+    .win-name {
+      margin-top: 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    .win-cta { margin-top: 16px; font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .win-cta a { color: var(--electric); text-decoration: none; font-weight: 600; }
+
+    /* ── TIP ── */
+    .tip-section { background: var(--steel); }
+
+    .tip-box {
+      margin-top: 20px;
+      border-left: 4px solid var(--electric);
+      padding: 18px 22px;
+      background: rgba(232,255,0,0.04);
+    }
+
+    .tip-box p { font-size: 15px; line-height: 1.8; color: #bbb; }
+
+    /* ── EVENTS ── */
+    .events-section { background: var(--black); }
+
+    .event-row {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 18px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .event-row:last-child { border-bottom: none; }
+
+    .event-date-box {
+      background: var(--electric);
+      color: var(--black);
+      text-align: center;
+      padding: 8px 4px;
+    }
+
+    .event-date-box .e-day { font-family: 'Bebas Neue', sans-serif; font-size: 28px; line-height: 1; }
+    .event-date-box .e-month { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; margin-top: 1px; }
+
+    .event-info strong {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--white);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .event-info p { font-size: 13px; color: var(--muted); line-height: 1.55; }
+
+    /* ── CTA ── */
+    .cta-strip {
+      background: var(--electric);
+      padding: 32px 44px;
+      text-align: center;
+    }
+
+    .cta-strip h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 46px;
+      color: var(--black);
+      line-height: 1;
+      margin-bottom: 10px;
+      letter-spacing: 0.02em;
+    }
+
+    .cta-strip p { font-size: 14px; font-weight: 600; color: #333; max-width: 400px; margin: 0 auto 22px; line-height: 1.6; }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--black);
+      color: var(--electric);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 15px 38px;
+      text-decoration: none;
+      border: 2px solid var(--black);
+      transition: background 0.2s;
+    }
+
+    .cta-btn:hover { background: #222; }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--black);
+      padding: 28px 44px;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-brand { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: var(--white); letter-spacing: 0.04em; }
+    .footer-brand span { color: var(--electric); }
+    .footer-info { font-size: 11px; color: var(--muted); margin-top: 5px; line-height: 1.6; }
+
+    .footer-links { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+
+    .footer-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--electric); }
+
+    @media (max-width: 560px) {
+      .wrapper { margin: 0; }
+      .header-inner, .section, .header-note, .cta-strip, .footer { padding-left: 22px; padding-right: 22px; }
+      .cel-col { padding: 28px 22px; }
+      .brand { font-size: 46px; }
+      .celebrations { grid-template-columns: 1fr; }
+      .cel-col:first-child { border-right: none; }
+      .footer { grid-template-columns: 1fr; }
+      .footer-links { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <span class="ticker-inner">
+      LET'S GO VELVE &nbsp;·&nbsp; SHOW UP. SHOW OUT. &nbsp;·&nbsp; NO DAYS OFF &nbsp;·&nbsp; YOUR BEST WEEK STARTS NOW &nbsp;·&nbsp; WE MOVE TOGETHER &nbsp;·&nbsp; LET'S GO VELVE &nbsp;·&nbsp; SHOW UP. SHOW OUT. &nbsp;·&nbsp; NO DAYS OFF &nbsp;·&nbsp; YOUR BEST WEEK STARTS NOW &nbsp;·&nbsp; WE MOVE TOGETHER &nbsp;·&nbsp;
+    </span>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-bg-text">V4L</div>
+    <div class="header-inner">
+      <div>
+        <div class="brand">VELVE<br/><span>FOR LIFE</span></div>
+        <div class="brand-sub">Weekly Member Newsletter</div>
+      </div>
+      <div class="header-meta">
+        <div class="week-label">Week of</div>
+        <div class="week-date">APR 21–27<br/>2026</div>
+      </div>
+    </div>
+    <div class="header-divider"></div>
+    <div class="header-note">Sent every week to our active members & intro program family. Not for the faint-hearted. 💥</div>
+  </header>
+
+  <!-- OWNER MESSAGE -->
+  <section class="section owner-section">
+    <div class="eyebrow">From the Owner</div>
+    <div class="section-title">LET'S <span>TALK.</span></div>
+    <div class="section-body">
+      <p>VELVE FAM — you showed UP this week and I am fired up. The floor was buzzing, the energy was contagious, and I watched a handful of you absolutely destroy goals you've been chasing for months.</p>
+      <p>This is what it's about. Not just the reps. The people. The grit. The community we're building together right here. Keep that same energy into next week — we're just getting started.</p>
+    </div>
+    <div class="owner-sig">— [Owner Name] 🔥</div>
+  </section>
+
+  <!-- ALL-STARS -->
+  <section class="section allstars-section">
+    <div class="eyebrow">⭐ All-Star Shout-Outs</div>
+    <div class="section-title">WHO <span>SHOWED UP</span> THIS WEEK</div>
+    <p class="section-body">Three or more sessions. Zero excuses. These legends put in the work — give them the recognition they deserve. 👇</p>
+    <div class="star-grid">
+      <div class="star-chip">🔥 Sarah M. <span class="star-sessions">5×</span></div>
+      <div class="star-chip">🔥 James T. <span class="star-sessions">4×</span></div>
+      <div class="star-chip">🔥 Rina C. <span class="star-sessions">4×</span></div>
+      <div class="star-chip">🔥 Marcus B. <span class="star-sessions">3×</span></div>
+      <div class="star-chip">🔥 Lena D. <span class="star-sessions">3×</span></div>
+      <div class="star-chip">🔥 Paolo R. <span class="star-sessions">3×</span></div>
+    </div>
+  </section>
+
+  <!-- BIRTHDAYS & MILESTONES -->
+  <div class="celebrations">
+    <div class="cel-col">
+      <div class="eyebrow">🎂 Birthdays</div>
+      <div class="section-title">BIG <span>DAYS</span></div>
+      <div class="celebrate-item">
+        <span class="cel-icon">🎉</span>
+        <div>
+          <div class="cel-name">Ana G.</div>
+          <div class="cel-detail">April 23 — Crush it today!</div>
+        </div>
+      </div>
+      <div class="celebrate-item">
+        <span class="cel-icon">🎉</span>
+        <div>
+          <div class="cel-name">Kevin S.</div>
+          <div class="cel-detail">April 26 — Happy birthday, beast!</div>
+        </div>
+      </div>
+    </div>
+    <div class="cel-col">
+      <div class="eyebrow">🏅 Milestones</div>
+      <div class="section-title">KEEP <span>GOING</span></div>
+      <div class="celebrate-item">
+        <span class="cel-icon">💪</span>
+        <div>
+          <div class="cel-name">Donna L.</div>
+          <div class="cel-detail">6 months strong 🔥</div>
+        </div>
+      </div>
+      <div class="celebrate-item">
+        <span class="cel-icon">💪</span>
+        <div>
+          <div class="cel-name">Tito F.</div>
+          <div class="cel-detail">3 months in — keep pushing!</div>
+        </div>
+      </div>
+      <div class="celebrate-item">
+        <span class="cel-icon">🏆</span>
+        <div>
+          <div class="cel-name">Carla M.</div>
+          <div class="cel-detail">ONE YEAR. Absolute legend.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STUDIO UPDATES -->
+  <section class="section">
+    <div class="eyebrow">In the Studio</div>
+    <div class="section-title">WHAT'S <span>HAPPENING</span></div>
+    <div class="update-item">
+      <div class="update-num">01</div>
+      <div class="update-content">
+        <strong>New Saturday 9:30 AM Slot — Book NOW</strong>
+        <p>You asked, we delivered. Brand new Saturday morning session is open. Spots are going fast — grab yours through the app before someone else does.</p>
+      </div>
+    </div>
+    <div class="update-item">
+      <div class="update-num">02</div>
+      <div class="update-content">
+        <strong>Equipment Upgrade Incoming</strong>
+        <p>New resistance bands and two more reformers landing next week. Brief setup — then the floor gets even better.</p>
+      </div>
+    </div>
+    <div class="update-item">
+      <div class="update-num">03</div>
+      <div class="update-content">
+        <strong>Parking Just Got Easier</strong>
+        <p>Side lot behind the building is now open for all members from 5:30 PM onward. Flash your membership card at the booth.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY WIN -->
+  <section class="section win-section">
+    <div class="eyebrow">🏆 Community Win</div>
+    <div class="section-title">REAL <span>RESULTS.</span> REAL PEOPLE.</div>
+    <div class="win-card">
+      <p>"I honestly didn't think I'd make it past the first month. Six months later, I've lost 11kg, I sleep better, and I actually look forward to my alarm going off. This community changed everything for me."</p>
+      <div class="win-name">— Maria V., 6-month member ⚡</div>
+    </div>
+    <p class="win-cta">Got a win to share? A PR, a transformation, a moment that made you proud? <a href="mailto:hello@velveforlife.com">Send it our way</a> — we want to put you in the spotlight.</p>
+  </section>
+
+  <!-- TIP -->
+  <section class="section tip-section">
+    <div class="eyebrow">💡 This Week's Tip</div>
+    <div class="section-title">REST IS NOT <span>WEAKNESS.</span></div>
+    <div class="tip-box">
+      <p>You don't build strength during training — you build it <em>during recovery</em>. If you've been grinding every single day, your body is running on stress hormones, not adaptation. Aim for at least one full rest day this week and protect your sleep like it's a training session. Because it is. Recovery isn't a reward. It's the strategy.</p>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section class="section events-section">
+    <div class="eyebrow">📅 Upcoming Events</div>
+    <div class="section-title">MARK YOUR <span>CALENDAR</span></div>
+    <div class="event-row">
+      <div class="event-date-box">
+        <div class="e-day">26</div>
+        <div class="e-month">Apr</div>
+      </div>
+      <div class="event-info">
+        <strong>Bring a Friend Day</strong>
+        <p>Free class for anyone you bring in. Show someone you care — bring them to Velve.</p>
+      </div>
+    </div>
+    <div class="event-row">
+      <div class="event-date-box">
+        <div class="e-day">3</div>
+        <div class="e-month">May</div>
+      </div>
+      <div class="event-info">
+        <strong>Summer Challenge Kick-Off</strong>
+        <p>8-week team challenge. Prizes. Accountability. Bragging rights. Sign up at the front desk.</p>
+      </div>
+    </div>
+    <div class="event-row">
+      <div class="event-date-box">
+        <div class="e-day">10</div>
+        <div class="e-month">May</div>
+      </div>
+      <div class="event-info">
+        <strong>Member Appreciation Morning</strong>
+        <p>Smoothies and breakfast after the 8 AM session. You earned it — come celebrate with us.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-strip">
+    <h2>REFER A FRIEND. GET REWARDED.</h2>
+    <p>Every member you refer earns you a free month. No cap. Bring your crew to Velve — and get paid for it.</p>
+    <a href="#" class="cta-btn">Refer Now →</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div>
+      <div class="footer-brand">VELVE <span>FOR LIFE</span></div>
+      <div class="footer-info">
+        [Studio Address] &nbsp;·&nbsp; hello@velveforlife.com<br/>
+        © 2026 Velve for Life. Sent to active & intro members only.
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="#">Book a Class</a>
+      <a href="#">Instagram</a>
+      <a href="#">Website</a>
+      <a href="#">Unsubscribe</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
